@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMaster - Universal Learning Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body data-theme="Classic White">
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>⚙️ Settings</h2>
+            
+            <label for="themeSelect">🎨 Select Theme</label>
+            <select id="themeSelect">
+                <option value="Classic White">Classic White</option>
+                <option value="Warm Paper">Warm Paper</option>
+                <option value="Mint Fresh">Mint Fresh</option>
+                <option value="Sky Blue">Sky Blue</option>
+                <option value="Lavender Mist">Lavender Mist</option>
+            </select>
+            
+            <hr>
+            
+            <label for="apiKey">Please enter your Gemini API key</label>
+            <input type="password" id="apiKey" placeholder="API Key">
+            <small>👉 <a href="https://aistudio.google.com/app/apikey" target="_blank">Get Free API Key</a></small>
+            
+            <hr>
+            
+            <h3>📝 Learning Strategy</h3>
+            <label for="summaryMode">Content Depth</label>
+            <select id="summaryMode">
+                <option value="Detailed Notes">Detailed Notes</option>
+                <option value="Summarised Notes">Summarised Notes</option>
+                <option value="Bullet Points Notes">Bullet Points Notes</option>
+            </select>
+            
+            <label for="language">📖 Languages</label>
+            <select id="language">
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+            </select>
+            
+            <label for="numQuestions">Number of Questions</label>
+            <input type="number" id="numQuestions" value="15" min="5" max="50" step="5">
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>📚 StudyMaster - Universal Learning Companion</h1>
+            <p class="caption">AI-Powered Learning Companion: Summarize, Quiz, and Flashcard Any Content</p>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" data-target="tab-input">📄 Source</button>
+                <button class="tab-btn" data-target="tab-notes">📝 Notes</button>
+                <button class="tab-btn" data-target="tab-flashcards">🗂️ Flashcards</button>
+                <button class="tab-btn" data-target="tab-quiz">❓ Quiz</button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="tab-input" class="tab-content active">
+                <div class="info-box">Upload your material or paste a link. Our AI will automatically scan and structure it for you.</div>
+                
+                <div class="radio-group">
+                    <label><input type="radio" name="sourceType" value="text" checked> Text</label>
+                    <label><input type="radio" name="sourceType" value="url"> Website URL</label>
+                    <label><input type="radio" name="sourceType" value="pdf"> PDF Document</label>
+                </div>
+
+                <!-- Inputs -->
+                <div id="input-text-container" class="input-section active">
+                    <textarea id="directText" rows="8" placeholder="Paste Text"></textarea>
+                    <button class="action-btn" onclick="processText()">🚀 Analyze Text</button>
+                </div>
+
+                <div id="input-url-container" class="input-section">
+                    <input type="text" id="websiteUrl" placeholder="https://...">
+                    <button class="action-btn" onclick="processUrl()">🚀Analyze URL</button>
+                </div>
+
+                <div id="input-pdf-container" class="input-section">
+                    <input type="file" id="pdfFile" accept="application/pdf">
+                    <label><input type="checkbox" id="forceOcr"> Force OCR (Check if Scanned/Images)</label>
+                    <button class="action-btn" onclick="processPdf()">🚀 Analyze PDF</button>
+                </div>
+
+                <!-- NEW: Animated Loading Section -->
+                <div id="loading" class="hidden loading-container">
+                    <div class="spinner"></div>
+                    <p id="loading-text">🚀 Processing your notes...</p>
+                </div>
+                <div id="error-message" class="error-box hidden"></div>
+            </div>
+
+            <div id="tab-notes" class="tab-content">
+                <div id="notes-container">Processing notes...</div>
+            </div>
+
+            <div id="tab-flashcards" class="tab-content">
+                <div id="flashcards-container">Processing flashcards...</div>
+            </div>
+
+            <div id="tab-quiz" class="tab-content">
+                <div id="quiz-container">Processing quiz...</div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
