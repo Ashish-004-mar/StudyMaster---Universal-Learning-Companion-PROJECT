@@ -1,4 +1,4 @@
-const API_BASE = "https://your-backend-name.onrender.com/api";
+const API_BASE = "https://studymaster-universal-learning-companion.onrender.com/api";
 let currentQuizData = [];
 
 // 1. Theme Management
